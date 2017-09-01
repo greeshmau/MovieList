@@ -1,6 +1,7 @@
 package com.example.gumapathi.movielist.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,8 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
     private List<Movie> moviesList;
 
-    public MoviesAdapter(List<Movie> contactList) {
-        this.moviesList = contactList;
+    public MoviesAdapter(List<Movie> moviesListList) {
+        this.moviesList = moviesListList;
     }
 
     @Override
@@ -33,6 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         Movie mi = moviesList.get(i);
         movieViewHolder.tvTitle.setText(mi.title);
         movieViewHolder.tvOverview.setText(mi.overview);
+        Log.i("SAMY-adp", mi.title);
         //movieViewHolder.ivMovieImage.setImageURI(android.net. mi.poster_path);
     }
 
@@ -40,10 +42,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     public MovieViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.movie_card, viewGroup, false);
+                inflate(R.layout.movie_card_unpopular, viewGroup, false);
 
         return new MovieViewHolder(itemView);
     }
+
     public class MovieViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row

@@ -8,23 +8,25 @@ import java.util.ArrayList;
 
 public class Movie {
     public int vote_count;
-    public int id;
+    public int movie_id;
     public boolean video;
     public float vote_average;
     public String title;
-    public float popularity;
+    public double popularity;
     public String poster_path;
     public String original_language;
-    public String original_title;
     public String backdrop_path;
     public boolean adult;
     public String overview;
     public String release_date;
 
-    public Movie(String title, String  overview, String image) {
+    public Movie(int movie_id, String title, String  overview, String poster_path, String backdrop_path, double popularity) {
+        this.movie_id = movie_id;
         this.title = title;
         this.overview = overview;
-        this.poster_path = image;
+        this.poster_path = poster_path;
+        this.backdrop_path = backdrop_path;
+        this.popularity = popularity;
     }
     /*private static int lastMovieId = 0;
     public static ArrayList<Movie> createContactsList(int numOfMovies) {

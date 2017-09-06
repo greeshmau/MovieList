@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.gumapathi.movielist.Adapter.MoviesAdapter;
 import com.example.gumapathi.movielist.Model.Movie;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,8 +23,9 @@ import okhttp3.Response;
 
 public class ListMoviesActivity extends AppCompatActivity {
 
-    RecyclerView recList;
+    //RecyclerView recList;
     MoviesAdapter ma;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,37 +62,36 @@ public class ListMoviesActivity extends AppCompatActivity {
             public void onResponse(Call call, final Response response) throws IOException {
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
-                }
-                else {
-                         runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    String responseData = response.body().string();
-                                    JSONObject json = new JSONObject(responseData);
-                                    JSONArray movieResults = json.getJSONArray("results");
-                                    List<Movie> result = new ArrayList<Movie>();
-                                    for (int i = 0; i < movieResults.length(); i++) {
-                                        JSONObject singleMovie = movieResults.getJSONObject(i);
-                                        Movie mi = new Movie(singleMovie.getInt("id"),
-                                                singleMovie.getString("original_title"),
-                                                singleMovie.getString("overview"),
-                                                singleMovie.getString("poster_path"),
-                                                singleMovie.getString("backdrop_path"),
-                                                singleMovie.getDouble("popularity"));
-                                        //Log.i("SAMY", mi.title);
-                                        result.add(mi);
-                                    }
-                                    ma = new MoviesAdapter(result);
-                                    RecyclerView recList = (RecyclerView) findViewById(R.id.rvMovies);
-                                    recList.setAdapter(ma);
-                                    ma.notifyDataSetChanged();
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                String responseData = response.body().string();
+                                JSONObject json = new JSONObject(responseData);
+                                JSONArray movieResults = json.getJSONArray("results");
+                                List<Movie> result = new ArrayList<Movie>();
+                                for (int i = 0; i < movieResults.length(); i++) {
+                                    JSONObject singleMovie = movieResults.getJSONObject(i);
+                                    Movie mi = new Movie(singleMovie.getInt("id"),
+                                            singleMovie.getString("original_title"),
+                                            singleMovie.getString("overview"),
+                                            "https://image.tmdb.org/t/p/w500" + singleMovie.getString("poster_path"),
+                                            "https://image.tmdb.org/t/p/w500" + singleMovie.getString("backdrop_path"),
+                                            singleMovie.getDouble("vote_average"),
+                                            singleMovie.getDouble("popularity"));
+                                    //Log.i("SAMY", mi.title);
+                                    result.add(mi);
                                 }
-                                catch (Exception e) {
+                                ma = new MoviesAdapter(result);
+                                RecyclerView recList = (RecyclerView) findViewById(R.id.rvMovies);
+                                recList.setAdapter(ma);
+                                ma.notifyDataSetChanged();
+                            } catch (Exception e) {
 
-                                }
                             }
-                        });
+                        }
+                    });
                 }
             }
         });

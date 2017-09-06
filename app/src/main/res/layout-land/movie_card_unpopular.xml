@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,14 +8,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="4dp"
-    android:layout_gravity="center"
     card_view:cardUseCompatPadding="true"
     card_view:cardPreventCornerOverlap="false"
-    card_view:contentPadding="3dp"
+    card_view:contentPadding="5dp"
     android:clickable="true"
+    card_view:cardElevation="6dp"
     card_view:cardBackgroundColor="#FFFFFF"
-    android:foreground="?android:attr/selectableItemBackground"
-    >
+    android:foreground="?android:attr/selectableItemBackground">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,14 +33,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             tools:text="Lorem Ipsum"
             android:id="@+id/tvTitle"
             android:padding="5dp"
-            android:textColor="#125688"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_toRightOf="@+id/ivMovieImage"
+            android:layout_toEndOf="@+id/ivMovieImage"
+            android:textColor="#125688"
+            android:gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +52,10 @@
             android:layout_below="@+id/tvTitle"
             android:layout_toEndOf="@+id/ivMovieImage"
             android:textColor="#125688"
-            android:typeface="normal"
             android:gravity="center"/>
+
+
     </RelativeLayout>
+
 </android.support.v7.widget.CardView>
+

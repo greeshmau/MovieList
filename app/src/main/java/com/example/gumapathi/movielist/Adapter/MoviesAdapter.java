@@ -1,5 +1,6 @@
 package com.example.gumapathi.movielist.Adapter;
 
+import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,18 +11,36 @@ import android.widget.TextView;
 
 import com.example.gumapathi.movielist.Model.Movie;
 import com.example.gumapathi.movielist.R;
+import com.example.gumapathi.movielist.Views.PopularMovieHolder;
+import com.example.gumapathi.movielist.Views.UnpopularMovieHolder;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
+import static com.example.gumapathi.movielist.R.id.ivMovieImage;
 
 /**
  * Created by gumapathi on 8/30/2017.
  */
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
+public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    final int POPULAR = 1;
+    final int UNPOPULAR = 0;
     private List<Movie> moviesList;
 
     public MoviesAdapter(List<Movie> moviesListList) {
         this.moviesList = moviesListList;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        Movie mi = moviesList.get(position);
+        if (mi.vote_average > 7) {
+            return POPULAR;
+        }
+        return UNPOPULAR;
     }
 
     @Override
@@ -30,40 +49,80 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder movieViewHolder, int i) {
-        Movie mi = moviesList.get(i);
-        movieViewHolder.tvTitle.setText(mi.title);
-        movieViewHolder.tvOverview.setText(mi.overview);
-        Log.i("SAMY-adp", mi.title);
-        //movieViewHolder.ivMovieImage.setImageURI(android.net. mi.poster_path);
+    public void onBindViewHolder(RecyclerView.ViewHolder movieViewHolder, int position) {
+        Movie mi = moviesList.get(position);
+        int orientation = movieViewHolder.itemView.getContext().getResources().getConfiguration().orientation;
+
+        if (movieViewHolder.getItemViewType() == POPULAR) {
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
+                holder.tvTitle.setText(mi.title);
+                holder.tvOverview.setText(mi.overview);
+                Log.i("SAMY-adp", mi.backdrop_path);
+                String imageUri = mi.backdrop_path;
+                ImageView ivBasicImage = holder.ivMovieImage;
+                Picasso.with(holder.ivMovieImage.getContext())
+                        .load(imageUri)
+                        .placeholder(R.drawable.placeholder)
+                        .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
+                        .into(ivBasicImage);
+            }
+            else {
+                PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
+                holder.tvTitle.setText(mi.title);
+                Log.i("SAMY-adp", mi.backdrop_path);
+                String imageUri = mi.backdrop_path;
+                ImageView ivBasicImage = holder.ivMovieImage;
+                Picasso.with(holder.ivMovieImage.getContext())
+                        .load(imageUri)
+                        .placeholder(R.drawable.placeholder)
+                        .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
+                        .into(ivBasicImage);
+            }
+        }
+        else {
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                UnpopularMovieHolder holder = (UnpopularMovieHolder) movieViewHolder;
+                holder.tvTitle.setText(mi.title);
+                holder.tvOverview.setText(mi.overview);
+                String imageUri = mi.backdrop_path;
+                ImageView ivBasicImage = holder.ivMovieImage;
+                Picasso.with(holder.ivMovieImage.getContext())
+                        .load(imageUri)
+                        .placeholder(R.drawable.placeholder)
+                        .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
+                        .into(ivBasicImage);
+            }
+            else {
+                UnpopularMovieHolder holder = (UnpopularMovieHolder) movieViewHolder;
+                holder.tvTitle.setText(mi.title);
+                holder.tvOverview.setText(mi.overview);
+                Log.i("SAMY-adp-else", mi.poster_path);
+                String imageUri = mi.poster_path;
+                ImageView ivBasicImage = holder.ivMovieImage;
+                Picasso.with(holder.ivMovieImage.getContext())
+                        .load(imageUri)
+                        .placeholder(R.drawable.placeholder)
+                        .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
+                        .into(ivBasicImage);
+            }
+        }
     }
 
     @Override
-    public MovieViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.
-                from(viewGroup.getContext()).
-                inflate(R.layout.movie_card_unpopular, viewGroup, false);
-
-        return new MovieViewHolder(itemView);
-    }
-
-    public class MovieViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
-        public TextView tvTitle;
-        public TextView tvOverview;
-        public ImageView ivMovieImage;
-
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
-        public MovieViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
-            super(itemView);
-
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-            tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
-            ivMovieImage = (ImageView) itemView.findViewById(R.id.ivMovieImage);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View itemView = null;
+        if (viewType == POPULAR) {
+            itemView = LayoutInflater.
+                    from(viewGroup.getContext()).
+                    inflate(R.layout.movie_card_popular, viewGroup, false);
+            //Picasso.with(viewGroup.getContext()).load(movie.getBackdropPath()).placeholder(R.drawable.placeholder).transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL)).into(ivMovieImage);
+            return new PopularMovieHolder(itemView);
+        } else {
+            itemView = LayoutInflater.
+                    from(viewGroup.getContext()).
+                    inflate(R.layout.movie_card_unpopular, viewGroup, false);
+            return new UnpopularMovieHolder(itemView);
         }
     }
 }

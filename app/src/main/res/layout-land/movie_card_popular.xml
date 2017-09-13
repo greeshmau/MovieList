@@ -36,35 +36,39 @@
             android:foregroundGravity="center"
             android:id="@+id/ivPlayIcon"
             android:alpha=".75"
-            android:src="@drawable/placeholder"
+            android:src="@drawable/play"
             android:layout_alignLeft="@+id/ivMovieImage"
             android:layout_alignRight="@+id/ivMovieImage"
             android:layout_marginTop="80dp"/>
 
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            tools:text="Lorem Ipsum"
-            android:id="@+id/tvTitle"
-            android:padding="5dp"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/ivMovieImage"
             android:layout_toEndOf="@+id/ivMovieImage"
-            android:textColor="#125688"
-            android:gravity="center"/>
+            android:layout_toRightOf="@+id/ivMovieImage"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            tools:text="Lorem Ipsum" />
+
         <TextView
+            android:id="@+id/tvOverview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Lomo cold-pressed vice biodiesel coloring book, skateboard readymade woke literally blue bottle. Lyft marfa godard, dreamcatcher you probably haven't heard of them helvetica try-hard distillery twee franzen. Enamel pin adaptogen tofu quinoa live-edge hella. Unicorn shaman fashion axe, banjo brooklyn polaroid neutra direct trade lumbersexual cray fanny pack hashtag migas schlitz."
-            android:id="@+id/tvOverview"
-            android:padding="5dp"
             android:layout_below="@+id/tvTitle"
-            android:layout_toRightOf="@+id/ivMovieImage"
             android:layout_toEndOf="@+id/ivMovieImage"
-            android:textColor="#125688"
-            android:gravity="center"/>
+            android:layout_toRightOf="@+id/ivMovieImage"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            tools:text="Lomo cold-pressed vice biodiesel coloring book, skateboard readymade woke literally blue bottle. Lyft marfa godard, dreamcatcher you probably haven't heard of them helvetica try-hard distillery twee franzen. Enamel pin adaptogen tofu quinoa live-edge hella. Unicorn shaman fashion axe, banjo brooklyn polaroid neutra direct trade lumbersexual cray fanny pack hashtag migas schlitz." />
 
 
 

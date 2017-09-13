@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gumapathi.movielist.Activities.MovieDetailActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:text="Lorem Ipsum"
+        android:id="@+id/tvTitle"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lomo cold-pressed vice biodiesel coloring book, skateboard readymade woke literally blue bottle. Lyft marfa godard, dreamcatcher you probably haven't heard of them helvetica try-hard distillery twee franzen. Enamel pin adaptogen tofu quinoa live-edge hella. Unicorn shaman fashion axe, banjo brooklyn polaroid neutra direct trade lumbersexual cray fanny pack hashtag migas schlitz."
+        android:id="@+id/tvOverview"
+        android:fontFamily="sans-serif-smallcaps"
+        android:padding="5dp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_below="@+id/tvTitle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        tools:text="00.00"
+        android:id="@+id/tvPopularity"
+        android:padding="5dp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_below="@+id/tvOverview" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="0.01"
+        android:rating="2.0"
+        android:isIndicator="true"
+        android:layout_below="@id/tvPopularity"
+        android:padding="5dp"/>
+
+</RelativeLayout>

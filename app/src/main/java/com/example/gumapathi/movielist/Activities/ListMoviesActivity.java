@@ -1,4 +1,4 @@
-package com.example.gumapathi.movielist;
+package com.example.gumapathi.movielist.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.gumapathi.movielist.Adapter.MoviesAdapter;
 import com.example.gumapathi.movielist.Model.Movie;
+import com.example.gumapathi.movielist.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +22,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static com.example.gumapathi.movielist.R.id.rvMovies;
+
 public class ListMoviesActivity extends AppCompatActivity {
 
     //RecyclerView recList;
@@ -31,12 +34,24 @@ public class ListMoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_movies);
 
-        RecyclerView recList = (RecyclerView) findViewById(R.id.rvMovies);
-        recList.setHasFixedSize(true);
+        RecyclerView rvMovies = (RecyclerView) findViewById(R.id.rvMovies);
+        rvMovies.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        rvMovies.setLayoutManager(llm);
         createMovies();
+
+//        rvMovies.addOnItemTouchListener(
+//                new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+//                    @Override public void onItemClick(View view, int position) {
+//                        // do whatever
+//                    }
+//
+//                    @Override public void onLongItemClick(View view, int position) {
+//                        // do whatever
+//                    }
+//                })
+//        );
 
         /*MoviesAdapter ma = new MoviesAdapter(createMovies());
         recList.setAdapter(ma);
@@ -84,7 +99,7 @@ public class ListMoviesActivity extends AppCompatActivity {
                                     result.add(mi);
                                 }
                                 ma = new MoviesAdapter(result);
-                                RecyclerView recList = (RecyclerView) findViewById(R.id.rvMovies);
+                                RecyclerView recList = (RecyclerView) findViewById(rvMovies);
                                 recList.setAdapter(ma);
                                 ma.notifyDataSetChanged();
                             } catch (Exception e) {

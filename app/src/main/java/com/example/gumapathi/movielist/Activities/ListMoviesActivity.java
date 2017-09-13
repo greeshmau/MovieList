@@ -1,11 +1,14 @@
 package com.example.gumapathi.movielist.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.gumapathi.movielist.Adapter.MoviesAdapter;
+import com.example.gumapathi.movielist.Decorator.ItemClickSupport;
 import com.example.gumapathi.movielist.Model.Movie;
 import com.example.gumapathi.movielist.R;
 
@@ -28,7 +31,7 @@ public class ListMoviesActivity extends AppCompatActivity {
 
     //RecyclerView recList;
     MoviesAdapter ma;
-
+    public final List<Movie> result = new ArrayList<Movie>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +44,15 @@ public class ListMoviesActivity extends AppCompatActivity {
         rvMovies.setLayoutManager(llm);
         createMovies();
 
-//        rvMovies.addOnItemTouchListener(
-//                new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-//                    @Override public void onItemClick(View view, int position) {
-//                        // do whatever
-//                    }
-//
-//                    @Override public void onLongItemClick(View view, int position) {
-//                        // do whatever
-//                    }
-//                })
-//        );
+        ItemClickSupport.addTo(rvMovies).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Movie movie = result.get(position);
+                Intent intent = new Intent(ListMoviesActivity.this, MovieDetailActivity.class);
+                intent.putExtra("movie_id", movie.movie_id);
+                startActivity(intent);
+            }
+        });
 
         /*MoviesAdapter ma = new MoviesAdapter(createMovies());
         recList.setAdapter(ma);
@@ -60,7 +61,6 @@ public class ListMoviesActivity extends AppCompatActivity {
 
     private void createMovies() {
         OkHttpClient client = new OkHttpClient();
-        String sample;
 
         Request request = new Request.Builder()
                 .url("https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")
@@ -85,7 +85,7 @@ public class ListMoviesActivity extends AppCompatActivity {
                                 String responseData = response.body().string();
                                 JSONObject json = new JSONObject(responseData);
                                 JSONArray movieResults = json.getJSONArray("results");
-                                List<Movie> result = new ArrayList<Movie>();
+
                                 for (int i = 0; i < movieResults.length(); i++) {
                                     JSONObject singleMovie = movieResults.getJSONObject(i);
                                     Movie mi = new Movie(singleMovie.getInt("id"),

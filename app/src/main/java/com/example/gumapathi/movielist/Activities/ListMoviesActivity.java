@@ -96,7 +96,7 @@ public class ListMoviesActivity extends AppCompatActivity {
                                             singleMovie.getDouble("vote_average"),
                                             singleMovie.getDouble("popularity"));
                                     //Log.i("SAMY", mi.title);
-                                    result.add(mi);
+                                        result.add(mi);
                                 }
                                 ma = new MoviesAdapter(result);
                                 RecyclerView recList = (RecyclerView) findViewById(rvMovies);

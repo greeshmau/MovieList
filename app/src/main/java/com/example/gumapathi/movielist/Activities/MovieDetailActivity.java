@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.gumapathi.movielist.Model.Movie;
 import com.example.gumapathi.movielist.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -23,6 +25,7 @@ import okhttp3.Response;
 public class MovieDetailActivity extends AppCompatActivity {
     TextView tvTitle, tvOverview, tvPopularity;
     RatingBar ratingBar;
+    ImageView ivMovieImgBgd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +76,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                                 tvOverview = (TextView) findViewById(R.id.tvOverview);
                                 tvPopularity = (TextView) findViewById(R.id.tvPopularity);
                                 ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+                                ivMovieImgBgd = (ImageView) findViewById(R.id.ivMovieImgBgd);
+
+                                Picasso.with(ivMovieImgBgd.getContext())
+                                        .load(mi.poster_path)
+                                        //.placeholder(R.drawable.placeholder)
+                                        //.transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
+                                        .into(ivMovieImgBgd);
 
                                 tvTitle.setText(mi.title);
                                 tvOverview.setText(mi.overview);

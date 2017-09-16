@@ -9,6 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ivMovieImgBgd"/>
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +24,7 @@
         android:layout_alignParentTop="true"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_alignParentLeft="true"
+        android:background="#29000000"
         android:textColor="@android:color/black"
         android:gravity="center"
         android:layout_marginTop="15dp"/>
@@ -26,6 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#29000000"
         tools:text="Lomo cold-pressed vice biodiesel coloring book, skateboard readymade woke literally blue bottle. Lyft marfa godard, dreamcatcher you probably haven't heard of them helvetica try-hard distillery twee franzen. Enamel pin adaptogen tofu quinoa live-edge hella. Unicorn shaman fashion axe, banjo brooklyn polaroid neutra direct trade lumbersexual cray fanny pack hashtag migas schlitz."
         android:id="@+id/tvOverview"
         android:fontFamily="sans-serif-smallcaps"
@@ -35,26 +42,46 @@
         android:layout_below="@+id/tvTitle" />
 
     <TextView
+        android:id="@+id/tvPopularity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvOverview"
+        android:background="#29000000"
         android:fontFamily="sans-serif-smallcaps"
-        tools:text="00.00"
-        android:id="@+id/tvPopularity"
+        android:gravity="center"
+        android:paddingRight="100dp"
         android:padding="5dp"
         android:textColor="@android:color/black"
-        android:gravity="center"
-        android:layout_below="@+id/tvOverview" />
+        tools:text="00.00"
+        android:layout_alignParentEnd="true" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/tvPopularity"
+        android:background="#29000000"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:padding="5dp"
+        android:rating="5.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:background="#29000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="0.01"
-        android:rating="2.0"
-        android:isIndicator="true"
-        android:layout_below="@id/tvPopularity"
-        android:padding="5dp"/>
+        android:layout_above="@+id/ratingBar"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvOverview"
+        android:layout_toStartOf="@+id/tvPopularity"
+        android:fontFamily="sans-serif-smallcaps"
+        android:paddingLeft="55dp"
+        android:paddingTop="5dp"
+        android:textColor="@android:color/black"
+        android:text="@string/popularity_label" />
 
 </RelativeLayout>

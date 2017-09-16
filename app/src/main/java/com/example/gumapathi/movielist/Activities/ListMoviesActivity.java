@@ -93,6 +93,7 @@ public class ListMoviesActivity extends AppCompatActivity {
                                             singleMovie.getString("overview"),
                                             "https://image.tmdb.org/t/p/w500" + singleMovie.getString("poster_path"),
                                             "https://image.tmdb.org/t/p/w500" + singleMovie.getString("backdrop_path"),
+                                            singleMovie.getDouble("vote_average")/2,
                                             singleMovie.getDouble("vote_average"),
                                             singleMovie.getDouble("popularity"));
                                     //Log.i("SAMY", mi.title);

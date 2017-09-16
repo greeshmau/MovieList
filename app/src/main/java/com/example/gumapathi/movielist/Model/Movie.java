@@ -13,6 +13,7 @@ public class Movie {
     public double vote_average;
     public String title;
     public double popularity;
+    public double stars;
     public String poster_path;
     public String original_language;
     public String backdrop_path;
@@ -25,11 +26,13 @@ public class Movie {
                  String  overview,
                  String poster_path,
                  String backdrop_path,
+                 double stars,
                  double vote_average,
                  double popularity) {
         this.movie_id = movie_id;
         this.title = title;
         this.overview = overview;
+        this.stars = stars;
         this.poster_path = poster_path;
         this.backdrop_path = backdrop_path;
         this.vote_average = vote_average;

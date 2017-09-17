@@ -40,7 +40,8 @@ List anything else that you can get done to improve the app functionality!
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/JqhuRco.gifv' title='GIF Walkthrough' width='' alt='GIF Walkthrough' />
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/Htqkt"><a href="//imgur.com/Htqkt"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<!-- <img src='https://i.imgur.com/JqhuRco.gifv' title='GIF Walkthrough' width='' alt='GIF Walkthrough' /> -->
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

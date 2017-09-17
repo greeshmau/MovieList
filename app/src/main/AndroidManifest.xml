@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MovieDetailActivity" />
-        <activity android:name=".Activities.YoutubePlayerActivity"></activity>
+        <activity android:name=".Activities.YoutubePlayerActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
     </application>
 
 </manifest>

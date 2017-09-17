@@ -23,7 +23,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class YoutubePlayerActivity extends YouTubeBaseActivity {
-    private static String API_KEY = "AIzaSyDZuLakIYICjMX_DlSOEiH6tM9uyLY0N2U";//"AIzaSyAZlHKhCex4OpVSADaDv5ZHDHUTuEBs5MM";
+    private static String API_KEY = "AIzaSyDZuLakIYICjMX_DlSOEiH6tM9uyLY0N2U";
     private YouTubePlayerView youTubePlayerView;
 
     @Override
@@ -31,9 +31,9 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube_player);
         Intent intent = getIntent();
-        final Long movieId = intent.getLongExtra("movie_id", -1);
-        Log.i("SAMY", "movie id: " + movieId);
-        if (movieId != -1) {
+        final String movieId = intent.getStringExtra("movieid");
+        Log.i("SAMY-youtube", "movie id: " + movieId);
+        if (!movieId.equals("")) {
             youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubePlayer);
             youTubePlayerView.initialize(API_KEY,
                     new YouTubePlayer.OnInitializedListener() {
@@ -42,7 +42,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
                                                             final YouTubePlayer youTubePlayer, boolean b) {
 
                             //get video trailer source
-                            String url = "https://api.themoviedb.org/3/movie/" + movieId.toString() + "/trailers?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+                            String url = "https://api.themoviedb.org/3/movie/" + movieId + "/trailers?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
                             OkHttpClient client = new OkHttpClient();
 
@@ -73,6 +73,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
                                                 int randomTrailerId = randomWithRange(0, movieTrailerJsonResults.length() - 1);
                                                 JSONObject trailer = movieTrailerJsonResults.getJSONObject(randomTrailerId);
                                                 String source = trailer.getString("source");
+                                                //youTubePlayer.setFullscreenControlFlags(FULLSCREEN_FLAG_CONTROL_ORIENTATION);
                                                 youTubePlayer.loadVideo(source);
                                             }
                                         } catch (JSONException e) {

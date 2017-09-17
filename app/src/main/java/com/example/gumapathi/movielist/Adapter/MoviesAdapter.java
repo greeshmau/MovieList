@@ -1,5 +1,6 @@
 package com.example.gumapathi.movielist.Adapter;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -7,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.example.gumapathi.movielist.Activities.YoutubePlayerActivity;
 import com.example.gumapathi.movielist.Model.Movie;
 import com.example.gumapathi.movielist.R;
 import com.example.gumapathi.movielist.Views.PopularMovieHolder;
@@ -18,8 +19,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
-
-import static com.example.gumapathi.movielist.R.id.ivMovieImage;
 
 /**
  * Created by gumapathi on 8/30/2017.
@@ -50,12 +49,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder movieViewHolder, int position) {
-        Movie mi = moviesList.get(position);
+        final Movie mi = moviesList.get(position);
         int orientation = movieViewHolder.itemView.getContext().getResources().getConfiguration().orientation;
 
         if (movieViewHolder.getItemViewType() == POPULAR) {
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
+                final PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
                 holder.tvTitle.setText(mi.title);
                 holder.tvOverview.setText(mi.overview);
                 Log.i("SAMY-adp", mi.backdrop_path);
@@ -66,9 +65,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         .placeholder(R.drawable.placeholder)
                         .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
                         .into(ivBasicImage);
+
+                holder.ivPlayIcon.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(holder.ivPlayIcon.getContext(), YoutubePlayerActivity.class);
+                        Log.i("SAMY-onClick", toString().valueOf(mi.movie_id));
+                        intent.putExtra("movieid", toString().valueOf(mi.movie_id));
+                        holder.ivPlayIcon.getContext().startActivity(intent);
+                    }
+                });
             }
             else {
-                PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
+                final PopularMovieHolder holder = (PopularMovieHolder) movieViewHolder;
                 holder.tvTitle.setText(mi.title);
                 Log.i("SAMY-adp", mi.backdrop_path);
                 String imageUri = mi.backdrop_path;
@@ -78,6 +87,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         .placeholder(R.drawable.placeholder)
                         .transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.ALL))
                         .into(ivBasicImage);
+                holder.ivPlayIcon.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(holder.ivPlayIcon.getContext(), YoutubePlayerActivity.class);
+                        Log.i("SAMY-onClick", toString().valueOf(mi.movie_id));
+                        intent.putExtra("movieid", toString().valueOf(mi.movie_id));
+                        holder.ivPlayIcon.getContext().startActivity(intent);
+                    }
+                });
             }
         }
         else {

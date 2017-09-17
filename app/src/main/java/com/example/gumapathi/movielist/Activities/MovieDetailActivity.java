@@ -28,7 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MovieDetailActivity extends YouTubeBaseActivity {
-    private static String API_KEY = "AIzaSyDZuLakIYICjMX_DlSOEiH6tM9uyLY0N2U";//"AIzaSyAZlHKhCex4OpVSADaDv5ZHDHUTuEBs5MM";
+    private static String API_KEY = "AIzaSyDZuLakIYICjMX_DlSOEiH6tM9uyLY0N2U";
     TextView tvTitle, tvOverview, tvPopularity;
     RatingBar ratingBar;
     ImageView ivMovieImgBgd;

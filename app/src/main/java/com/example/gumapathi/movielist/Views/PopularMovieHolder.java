@@ -15,6 +15,7 @@ public class PopularMovieHolder extends RecyclerView.ViewHolder {
 public TextView tvTitle;
 public TextView tvOverview;
 public ImageView ivMovieImage;
+    public ImageView ivPlayIcon;
 
 public PopularMovieHolder(View itemView) {
     super(itemView);
@@ -22,5 +23,6 @@ public PopularMovieHolder(View itemView) {
     tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
     tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
     ivMovieImage = (ImageView) itemView.findViewById(R.id.ivMovieImage);
+    ivPlayIcon =  (ImageView) itemView.findViewById(R.id.ivPlayIcon);
     }
 }

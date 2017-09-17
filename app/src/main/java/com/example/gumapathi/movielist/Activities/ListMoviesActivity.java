@@ -112,4 +112,8 @@ public class ListMoviesActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void playTrailer(View view) {
+
+    }
 }

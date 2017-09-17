@@ -2,7 +2,7 @@
 
 **Movie List** shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
-Time spent: **15** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -40,8 +40,7 @@ List anything else that you can get done to improve the app functionality!
 
 Here's a walkthrough of implemented user stories:
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/Htqkt"><a href="//imgur.com/Htqkt"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-<!-- <img src='https://i.imgur.com/JqhuRco.gifv' title='GIF Walkthrough' width='' alt='GIF Walkthrough' /> -->
+<img src='https://i.imgur.com/JqhuRco.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

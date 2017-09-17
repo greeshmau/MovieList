@@ -34,12 +34,13 @@ The following **additional** features are implemented:
 
 List anything else that you can get done to improve the app functionality!
 * [X] Added background image of the movie to the Details page.
+* [X] Added a custom launcher icon
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/JqhuRco.gifv' title='GIF Walkthrough' width='' alt='GIF Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -49,8 +50,8 @@ Describe any challenges encountered while building the app.
 
 ## Open-source libraries used
 
-- [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Picasso](http://square.github.io/picasso/) - Image loading and caching library for Android
+- OKHttp
 
 ## License
 

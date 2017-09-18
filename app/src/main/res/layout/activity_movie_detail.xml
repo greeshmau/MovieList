@@ -57,20 +57,17 @@
         android:textColor="@android:color/black"
         tools:text="00.00"
         android:layout_alignParentEnd="true" />
-
     <RatingBar
         android:id="@+id/ratingBar"
         style="@android:style/Widget.DeviceDefault.Light.RatingBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@id/tvPopularity"
         android:background="#29000000"
         android:isIndicator="true"
         android:numStars="5"
         android:padding="5dp"
-        android:rating="5.0" />
+        android:rating="3.5" />
 
     <TextView
         android:id="@+id/textView"

@@ -100,7 +100,7 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
                                 tvPopularity.setText(String.format("Popularity: %.2f", mi.popularity));
 
                                 //Picasso.with(this).load(movie.getPosterPath()).placeholder(R.mipmap.ic_launcher).transform(new RoundedCornersTransformation(15, 15, RoundedCornersTransformation.CornerType.BOTTOM_RIGHT)).into(ivMovieImage);
-                                ratingBar.setNumStars((int) Math.round(mi.vote_average) + 1);
+                                //ratingBar.setNumStars((int) Math.round(mi.vote_average) + 1);
                                 //Log.i(TAG, "rating: " + mi.vote_average + " " + mi.vote_average.floatValue());
                                 ratingBar.setStepSize((float) 0.01);
 

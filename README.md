@@ -40,7 +40,7 @@ List anything else that you can get done to improve the app functionality!
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/JqhuRco.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='MovieList3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
